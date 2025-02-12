@@ -1,0 +1,37 @@
+# Utilise views/index.php comme le fichier index principal.
+DirectoryIndex index.php
+
+# Active les options si nécessaire pour gérer les liens symboliques.
+# Options FollowSymlinks
+
+# Désactive MultiViews pour éviter les résolutions indésirables.
+<IfModule mod_negotiation.c>
+    Options -MultiViews
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Base pour permettre les redirections correctes en cas d’alias ou sous-répertoire.
+    RewriteCond %{REQUEST_URI}::$0 ^(/.+)/(.*)::\2$
+    RewriteRule .* - [E=BASE:%1]
+
+    # Conserve l’en-tête HTTP_AUTHORIZATION.
+    RewriteCond %{HTTP:Authorization} .+
+    RewriteRule ^ - [E=HTTP_AUTHORIZATION:%0]
+
+    # Redirige vers URI sans index pour éviter le contenu dupliqué.
+    RewriteCond %{ENV:REDIRECT_STATUS} =""
+    RewriteRule ^index\.php(?:/(.*)|$) %{ENV:BASE}/$1 [R=301,L]
+
+    # Sert le fichier demandé si celui-ci existe, sinon redirige vers views/index.php.
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ %{ENV:BASE}/index.php [L]
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+    <IfModule mod_alias.c>
+        # Redirige explicitement la page d'accueil vers le contrôleur principal.
+        RedirectMatch 307 ^/$ /index.php/
+    </IfModule>
+</IfModule>
