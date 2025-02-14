@@ -1,16 +1,16 @@
-<?php include_once 'header.php';?>
+<?php include_once 'header.php'?>
 
 <section class="banner">
   <div class="banner-content">
-    <h1>Bienvenue sur Alta Pro 65</h1>
+    <h1>Bienvenue chez Alta Pro 65</h1>
     <p>Découvrez nos services.</p>
-    <a href="#" class="cta-button">Explorer</a>
+    <a href="service.php" class="cta-button">Explorer</a>
   </div>
 </section>
 
 <section class="presentation">
   <div class="presentation-text">
-    <h2>Présentation de notre entreprise</h2>
+    <h2>Présentation de notre entreprise :</h2>
     <p> Alta pro 65 est une entreprise à taille humaine spécialisée dans d’élagage, le démontage et l’abattage d’arbres dangereux inaccessibles aux engins :</p>
     
     <div class="presentation-items">
@@ -34,11 +34,11 @@
   </div>
 
   <div class="presentation-photo">
-    <img src="" alt="Photo de l'entreprise">
+    <img src="/WWW/Ressources/Images/Image-1.jpg" alt="Photo de l'entreprise">
   </div>
 </section>
 
 
 <script src="/WWW/Ressources/script.js"></script>
 
-<?php include_once 'footer.php';?>
+<?php include_once 'footer.php'?>

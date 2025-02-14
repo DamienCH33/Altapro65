@@ -12,15 +12,17 @@
   <header>
     <nav class="navbar">
       <div class="logo">
-        <img src="/WWW/Ressources/Images/logo vectorise.webp" alt="Logo de l'entreprise">
+        <img src="/WWW/Ressources/Images/logo vectorise.jpg" alt="Logo de l'entreprise">
         <span>Alta Pro 65</span>
       </div>
       <ul class="nav-links">
         <li><a href="index.php">Accueil</a></li>
         <li><a href="service.php">Nos Services</a></li>
-        <li><a href="#realisation">Nos Réalisations</a></li>
+        <li><a href="realisation.php">Nos Réalisations</a></li>
         <li><a href="about.php">À Propos</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="contact.php">Contact</a></li>
       </ul>
     </nav>
   </header>
+
+
