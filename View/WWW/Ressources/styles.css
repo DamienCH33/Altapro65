@@ -208,6 +208,14 @@ body {
 /* END PRESENTATION*/
 
 /* SERVICES*/
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background: #121212;
+  color: white;
+}
 
 .services {
   display: flex;
@@ -216,16 +224,25 @@ body {
   padding: 40px;
   background: linear-gradient(135deg, #3d2b1f, #004d00, #007a00);
   flex-direction: row-reverse;
-  position: absolute;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .services-photo {
   flex: 1;
   max-width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: rgba(0, 179, 0, 0.2);
+  border-radius: 15px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8), -4px -4px 10px rgba(255, 255, 255, 0.5);
 }
 
 .services-photo img {
   width: 100%;
+  height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -234,20 +251,20 @@ body {
   flex: 1;
   max-width: 40%;
   color: white;
-  padding: 0 20px;
+  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center; 
- }
+  text-align: left;
+}
 
 .services h2 {
   font-size: 40px;
   margin-bottom: 20px;
   color: white;
-  text-align: left;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 1.5);
 }
+
 .services h3 {
   font-size: 10px;
   margin-bottom: 20px;
@@ -260,11 +277,12 @@ body {
   font-size: 18px;
   margin-bottom: 30px;
   color: white;
-  text-align: left;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 1.5);
 }
 
+
 /* Ajout icone */
+
 .services-items {
   display: flex;
   flex-wrap: wrap;
@@ -314,17 +332,12 @@ body {
 
 /* Ajout de l'encadré de texte */
 .services-info {
-  position: absolute;
-  right: 0; 
-  top: 50%;
-  transform: translateY(-50%); 
   flex: 1;
   max-width: 30%;
   display: flex;
   justify-content: flex-end;
   text-align: left;
 }
-
 
 .info-box {
   background-color: #fff;
@@ -424,10 +437,12 @@ body {
   margin-top: 15px;
   font-size: 1em;
   transition: background-color 0.3s ease;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4), -4px -4px 10px rgba(255, 255, 255, 0.05);
+  border-radius: 12px; /* Coins arrondis */
 }
 
 .content .btn:hover {
-  background-color: #00b300;
+  background-color: #008a00;
 }
 
 /* Navigation */
@@ -437,15 +452,19 @@ body {
   transform: translateY(-50%);
   background-color: #00b300;
   color: white;
-  padding: 15px;
+  padding: 3px 8px;
   cursor: pointer;
   border: none;
-  font-size: 2em;
+  font-size: 1.2em;
   transition: background-color 0.3s ease;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4), -4px -4px 10px rgba(255, 255, 255, 0.05);
+  border-radius: 12px; /* Coins arrondis */
+  background: transparent;
 }
 
 .button-next:hover, .button-prev:hover {
-  background-color: #00b300;
+  background-color: #008a00;
+  color: white;
 }
 
 .button-next {
@@ -454,6 +473,19 @@ body {
 
 .button-prev {
   left: 10px;
+}
+
+/* Ajout des flèches */
+.button-next::before {
+  content: '\2192'; /* flèche droite */
+  font-size: 1.2em; /* taille ajustée */
+  line-height: 1;
+}
+
+.button-prev::before {
+  content: '\2190'; /* flèche gauche */
+  font-size: 1.2em; /* taille ajustée */
+  line-height: 1;
 }
 /* END REALISATION-SLIDER*/
 
@@ -592,7 +624,7 @@ video {
 
 /* REALISATION-COMMENT*/
 .comments {
-  background: linear-gradient(135deg, #3d2b1f, #004d00, #007a00)
+  background: linear-gradient(135deg, #3d2b1f, #004d00, #007a00);
   padding: 20px;
   margin-top: 40px;
   border-radius: 8px;
@@ -608,18 +640,19 @@ video {
   margin: 50px auto;
   padding: 20px;
   background: white;
+  color: #000;
   box-shadow: 0 0 10px rgba(0, 0, 0, 1);
   border-radius: 5px;
 }
     
 .comment-form textarea {
   width: 100%;
-  height: 80px;
+  height: 150px;
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
   margin-bottom: 10px;
-  resize: both; 
+  resize: none;
 }
     
 .stars {
@@ -655,6 +688,7 @@ button:hover {
   margin: 50px auto;
   padding: 20px;
   background: white;
+  color: #000;
   box-shadow: 0 0 10px rgba(0, 0, 0, 1);
   border-radius: 5px;
 }
@@ -697,6 +731,8 @@ button:hover {
   margin: 50px auto;
   padding: 20px;
   background:white;
+  color: #000;
+  text-align: left;
   box-shadow: 0 0 10px rgba(0, 0, 0, 1);
   border-radius: 5px;
   align-items: center;
@@ -739,6 +775,7 @@ button:hover {
   justify-content: flex-start;
   gap: 10px;
   margin-top: 10px;
+  color: #000;
   text-align: left;
 }
 .checkbox-container input {
@@ -772,6 +809,79 @@ button:hover {
 
 /* END CONTACT*/
 
+/* ABOUT*/
+
+/* MAIN CONTENT */
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.about-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #333;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-text {
+  flex: 1;
+  padding: 20px;
+}
+.about-text h2 {
+  color: white;
+  text-align: left;
+}
+
+.about-text p {
+  text-align: left;
+  color: white;
+}
+
+/* Encadré et image */
+.about-image {
+  flex: 1;
+  max-width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: rgba(0, 179, 0, 0.5);
+  border-radius: 15px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8), -4px -4px 10px rgba(255, 255, 255, 0.3);
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* END ABOUT*/
+
+
+
+/* 404*/
+
+
+/* END 404*/
 
 /* FOOTER*/
 

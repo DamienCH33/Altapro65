@@ -43,10 +43,12 @@
 <section class="gallery">
     <h2>Galerie photos</h2>
     <div class="image-grid">
-      <div class="image-item"><img src="/WWW/Ressources/Images/Imagegalerie-1.jpg" alt="Réalisations 1" class="gallery-image"></div>
-      <div class="image-item"><img src="/WWW/Ressources/Images/Imagegalerie-2.jpg" alt="Réalisations 2" class="gallery-image"></div>
-      <div class="image-item"><img src="/WWW/Ressources/Images/Imagegalerie-3.jpg" alt="Réalisations 3" class="gallery-image"></div>
-      <div class="image-item"><img src="/WWW/Ressources/Images/Imagegalerie-4.jpg" alt="Réalisations 3" class="gallery-image"></div>
+      <div class="image-item"><img src="/WWW/Ressources/Images/Image-7.jpg" alt="Réalisations 1" class="gallery-image"></div>
+      <div class="image-item"><img src="/WWW/Ressources/Images/Image-9.jpg" alt="Réalisations 2" class="gallery-image"></div>
+      <div class="image-item"><img src="/WWW/Ressources/Images/Image-10.jpg" alt="Réalisations 3" class="gallery-image"></div>
+      <div class="image-item"><img src="/WWW/Ressources/Images/Image-13.jpg" alt="Réalisations 3" class="gallery-image"></div>
+      <div class="image-item"><img src="/WWW/Ressources/Images/Image-2.jpg" alt="Réalisations 3" class="gallery-image"></div>
+      <div class="image-item"><img src="/WWW/Ressources/Images/Image-3.jpg" alt="Réalisations 3" class="gallery-image"></div>
       <!-- Ajoutez plus d'images ici -->
     </div>
 </section>
