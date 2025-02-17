@@ -3,11 +3,11 @@
 
 <div class="container_form">
         <h2>Contactez-nous</h2>
-        <form>
+        <form action="/contact_soumission.php" method="POST" enctype="multipart/form-data">
             <input type="text" name="nom" placeholder="Renseignez votre nom" required>
             <input type="text" name="prenom" placeholder="Renseignez votre prénom" required>
             <input type="email" name="email" placeholder="Renseignez votre email" required>
-            <input type="tel" name="telephone" placeholder="Renseignez votre numéro de téléphone" required>
+            <input type="tel" name="phone" placeholder="Renseignez votre numéro de téléphone" required>
             <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
             <input type="file" name="photo" accept="image/*">
             <div class="checkbox-container">

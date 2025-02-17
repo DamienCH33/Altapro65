@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<?php include_once '../config/database.php';
+?><!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -16,11 +17,11 @@
         <span>Alta Pro 65</span>
       </div>
       <ul class="nav-links">
-        <li><a href="index.php">Accueil</a></li>
-        <li><a href="service.php">Nos Services</a></li>
-        <li><a href="realisation.php">Nos Réalisations</a></li>
-        <li><a href="about.php">À Propos</a></li>
-        <li><a href="contact.php">Contact</a></li>
+        <li><a href="/index.php">Accueil</a></li>
+        <li><a href="/service.php">Nos Services</a></li>
+        <li><a href="/realisation.php">Nos Réalisations</a></li>
+        <li><a href="/about.php">À Propos</a></li>
+        <li><a href="/contact.php">Contact</a></li>
       </ul>
     </nav>
   </header>

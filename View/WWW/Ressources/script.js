@@ -75,6 +75,7 @@ function updateStars() {
       star.classList.remove('selected');
     }
   });
+  document.getElementById('selected-rating').value=selectedRating
 }
 
 function highlightStars(value) {
@@ -94,37 +95,6 @@ function resetStars() {
     }
   });
 }
-
-// Script pour ajouter un commentaire
-const commentForm = document.getElementById('commentForm');
-const commentText = document.getElementById('comment-text');
-const commentsList = document.getElementById('comments-list');
-
-commentForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-
-  // Récupération du texte et de la note
-  const text = commentText.value;
-  const rating = selectedRating;
-
-  if (text && rating) {
-    // Créer un nouvel élément de commentaire
-    const newComment = document.createElement('div');
-    newComment.classList.add('comment');
-    newComment.innerHTML = `
-      <p><strong>Utilisateur anonyme</strong> : ${text}</p>
-      <p>Évaluation: ${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}</p>
-    `;
-
-    // Ajouter le commentaire à la liste
-    commentsList.appendChild(newComment);
-
-    // Réinitialiser le formulaire
-    commentText.value = '';
-    selectedRating = 0;
-    updateStars();
-  }
-});
 
 /* End Script pour la notation par étoiles*/
 
@@ -156,4 +126,3 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
-

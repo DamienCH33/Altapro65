@@ -73,11 +73,14 @@
     <!-- Formulaire de soumission de commentaire -->
     <div class="comment-form">
       <h3>Laissez un commentaire</h3>
-      <form id="commentForm">
-        <textarea id="comment-text" placeholder="Votre commentaire" name="comment-text" required></textarea>
+        <form action="/comment_soumission.php" method="POST" enctype="multipart/form-data">
+            <input type="text" name="nom" placeholder="Renseignez votre nom" required>
+         <input type="text" name="prenom" placeholder="Renseignez votre prénom" required>
+            <textarea id="comment-text" placeholder="Votre commentaire" name="comment" required></textarea>
 
         <label for="rating">Indiquez votre satisfaction :</label>
-        <div class="stars" id="rating">
+        <input type="hidden" id="selected-rating" name="rating"/>
+        <div class="stars" id="rating" min="1" max="5">
           <span class="star" data-value="1">&#9733;</span>
           <span class="star" data-value="2">&#9733;</span>
           <span class="star" data-value="3">&#9733;</span>
@@ -93,7 +96,27 @@
     <!-- Liste des commentaires -->
     <div class="comments-list" id="comments-list">
       <h3>Commentaires récents</h3>
-      <!-- Les commentaires s'ajouteront ici dynamiquement -->
+     
+       <?php 
+
+    $sql = "SELECT  * FROM comments order by created_at desc";
+    $db = Database::connect();
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $comments = $stmt->fetchAll();
+    if(!empty($comments)){
+        foreach ($comments as $comment) { ?>
+            <div class="comment">
+                <div><?= $comment['nom'] . " " . $comment['prenom']?></div>    
+                <div><?= $comment['comment']?></div>
+                <div><?= $comment['rating']?></div>
+            </div>
+
+    <?php }
+    }else {
+        echo "Il n'y a pas encore de commentaire";
+    }?>
+      
     </div>
 </section>
 
