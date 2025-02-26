@@ -6,11 +6,11 @@
 
         <div class="wrapper">
 
-            <div class="swiper-slide" style="background: url(/WWW/Ressources/Images/Image-5test.jpeg.png) no-repeat">
+            <div class="swiper-slide" style="background: url(/WWW/Ressources/Images/Image-3test.jpg) no-repeat">
 
                 <div class="content">
-                    <span>Exploration, découverte, voyager</span>
-                    <h3>Voyager autour du monde</h3>
+                    <span>Lorem ipsum dolor sit amet.</span>
+                    <h3>Lorem ipsum dolor sit amet.</h3>
                     <a href="" class="btn">Plus de découverte</a>
                 </div>           
             </div>
@@ -18,8 +18,8 @@
             <div class="swiper-slide" style="background: url(/WWW/Ressources/Images/banniere-foret-montagne.avif) no-repeat">
 
                 <div class="content">
-                    <span>Exploration, découverte, voyager</span>
-                    <h3>Découvrez de nouveaux endroits</h3>
+                    <span>Lorem ipsum dolor sit amet.</span>
+                    <h3>Lorem ipsum dolor sit amet.</h3>
                      <a href="" class="btn">Plus de découverte</a>
                 </div>           
             </div>
@@ -27,8 +27,8 @@
             <div class="swiper-slide" style="background: url(/WWW/Ressources/Images/Image-3.jpg) no-repeat">
 
                 <div class="content">
-                    <span>Exploration, découverte, voyager</span>
-                    <h3>Faites en sorte que votre voyage en vaille la peine</h3>
+                    <span>Lorem ipsum dolor sit amet.</span>
+                    <h3>Lorem ipsum dolor sit amet.</h3>
                     <a href="" class="btn">Plus de découverte</a>
                 </div>           
             </div>
@@ -95,7 +95,7 @@
 <section>
     <!-- Liste des commentaires -->
     <div class="comments-list" id="comments-list">
-      <h3>Commentaires récents</h3>
+      <h3>Commentaires récents</h3><br>
      
        <?php 
 
@@ -104,19 +104,27 @@
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $comments = $stmt->fetchAll();
-    if(!empty($comments)){
+    if (!empty($comments)) {
         foreach ($comments as $comment) { ?>
             <div class="comment">
-                <div><?= $comment['nom'] . " " . $comment['prenom']?></div>    
-                <div><?= $comment['comment']?></div>
-                <div><?= $comment['rating']?></div>
+                <div>
+                    <?= htmlspecialchars($comment['nom'] . " " . $comment['prenom']) . " : " . htmlspecialchars($comment['comment']) ?>
+                </div>    
+                <div>Avis : 
+                <div class="rating">
+                <?php 
+                    $rating = (int) $comment['rating'];
+                    for ($i = 1; $i <= 5; $i++) {
+                        echo $i <= $rating ? '★' : '☆'; 
+                    }
+                ?>
             </div>
-
-    <?php }
-    }else {
-        echo "Il n'y a pas encore de commentaire";
-    }?>
-      
+        </div>
+            </div>
+        <?php }
+    } else {
+        echo "Il n'y a pas de commentaire";
+    } ?>
     </div>
 </section>
 

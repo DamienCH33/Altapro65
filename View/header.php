@@ -12,18 +12,26 @@
 
   <header>
     <nav class="navbar">
-      <div class="logo">
-        <img src="/WWW/Ressources/Images/logo vectorise.jpg" alt="Logo de l'entreprise">
-        <span>Alta Pro 65</span>
+    <div class="logo">
+            <a href="/index.php">
+                <img src="/WWW/Ressources/Images/logo vectorise.jpg" alt="Logo de l'entreprise">
+            
+            <span>Alta Pro 65</span>
+            </a>
+        </div>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
       </div>
-      <ul class="nav-links">
-        <li><a href="/index.php">Accueil</a></li>
-        <li><a href="/service.php">Nos Services</a></li>
-        <li><a href="/realisation.php">Nos Réalisations</a></li>
-        <li><a href="/about.php">À Propos</a></li>
-        <li><a href="/contact.php">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <ul class="nav-links">
+      <li><a href="/index.php">Accueil</a></li>
+      <li><a href="/service.php">Nos Services</a></li>
+      <li><a href="/realisation.php">Nos Réalisations</a></li>
+      <li><a href="/about.php">À Propos</a></li>
+      <li><a href="/contact.php">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-
+<script src="/WWW/Ressources/script.js"></script>
