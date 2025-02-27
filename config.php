@@ -3,7 +3,7 @@
 $databaseHost = 'localhost';
 $databaseUser = 'root';
 $databasePassword = '';
-$databaseDbName = 'altapro65';
+$databaseDbName = 'alta pro 65';
 
 if (file_exists(__DIR__ . DIRECTORY_SEPARATOR . 'config.local.php')) {
     include_once __DIR__ . DIRECTORY_SEPARATOR . 'config.local.php';
