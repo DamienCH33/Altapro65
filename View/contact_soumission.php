@@ -1,9 +1,9 @@
 <?php
 include_once '../config/database.php';
+
 $pdo = Database::connect();
 
-var_dump($_POST,$_FILES);
-
+$data = [];
 
 foreach ($_POST as $cle => $valeur) {
     if ($cle == 'nom') {
@@ -19,16 +19,17 @@ foreach ($_POST as $cle => $valeur) {
         $valeur = ucfirst($valeur);
     }
 
-    $data[$cle] = $valeur;
+    if ('' !== $valeur) {
+        $data[$cle] = $valeur;
+    }
 }
 
 function formatPhoneNumber($number) {
    
     $number = preg_replace('/[^\d]/', '', $number);
     
-    
     if (strlen($number) != 10) {
-        return "Numéro de téléphone invalide.";
+        return false;
     }
     
     return substr($number, 0, 2) . ' ' .
@@ -37,10 +38,9 @@ function formatPhoneNumber($number) {
            substr($number, 6, 2) . ' ' .
            substr($number, 8, 2);
 }
-if (isset($_POST['phone'])) {
-    $data['phone'] = formatPhoneNumber($_POST['phone']);
+if (isset($_POST['phone']) && $phone = formatPhoneNumber($_POST['phone'])) {
+    $data['phone'] = $phone;
 }
-
 
 if (!empty($data)) {
     
@@ -53,11 +53,15 @@ if (!empty($data)) {
             VALUES (" . implode(", ", array_keys($parameters)) . ")";
            
     $stmt = $pdo->prepare($sql);
-    
-    
+        
     $stmt->execute($parameters);
 
     echo "Votre message a été ajouté avec succès !";
+
+    mail(DESTINATOR_EMAIL, 'Prise contact', json_encode($data));
+
+    header('location: /index.php?contact-success=1');
+    die;
 }
 
 header('location: /index.php');

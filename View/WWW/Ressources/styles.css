@@ -5,10 +5,18 @@
   padding: 0;
   box-sizing: border-box;
 }
-  
+
 body {
+  margin: 0;
+  padding: 0;
   font-family: Arial, sans-serif;
+  background: black;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
+
 .header {
   background: linear-gradient(145deg, #00b300, #008a00);
   color: #fff;
@@ -230,11 +238,8 @@ body {
 /* END BANNER*/
 
 /* PRESENTATION*/
-body {
-  background-color: black;
-  margin: 0;
-  padding: 0;
-}
+
+
 .presentation {
   display: flex;
   justify-content: space-between;
@@ -577,9 +582,7 @@ body {
 
 /* REALISATION*/
 /* REALISATION-SLIDER*/
-body {
-  font-family: Arial, sans-serif;
-}
+
 
 .real_slider {
   max-width: calc(100% - 40px);
@@ -740,13 +743,6 @@ body {
 /* END REALISATION-SLIDER*/
 
 /* REALISATION-GALERIE*/
-
-    
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  background-color: #f4f4f4;
-}
     
 h1 {
   font-size: 2.5em;
@@ -1221,11 +1217,6 @@ button:hover {
   justify-content: center;
   align-items: center;
   padding: 5px;
-}
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
 }
 
 .about-section {

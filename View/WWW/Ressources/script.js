@@ -1,7 +1,8 @@
-
-let stars = 5; // Déclaration initiale d'une variable pour les étoiles
-
 document.addEventListener('DOMContentLoaded', function () {
+    if (null === document.querySelector('.slider')) {
+      return;
+    }
+
     const swiperWrapper = document.querySelector('.wrapper');
     const slides = document.querySelectorAll('.swiper-slide');
     const nextButton = document.querySelector('.button-next');
@@ -106,6 +107,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Ouverture de l'image dans galerie
 document.addEventListener('DOMContentLoaded', function () {
+  if (null === document.querySelector('.gallery')) {
+    return;
+  }
+
   // Récupérer toutes les images de la galerie
   const images = document.querySelectorAll('.gallery-image');
   const modal = document.getElementById('imageModal');

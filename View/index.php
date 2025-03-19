@@ -1,6 +1,9 @@
 <?php include_once 'header.php'?>
 
 <section class="banner">
+  <?php if (isset($_GET['contact-success']) && !empty($_GET['contact-success'])) { ?>
+      Message envoyé avec succès.
+  <?php } ?>
   <div class="banner-content">
     <h1>Bienvenue chez Alta Pro 65</h1>
     <p>Découvrez nos services.</p>

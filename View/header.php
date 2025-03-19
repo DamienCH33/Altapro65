@@ -33,5 +33,3 @@
     </ul>
   </nav>
 </header>
-
-<script src="/WWW/Ressources/script.js"></script>
