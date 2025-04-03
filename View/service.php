@@ -12,42 +12,42 @@
       
       <div class="services-items">
         <div class="service-item">
-          <i class="fa fa-briefcase"></i>
+        <img src="/WWW/Ressources/Images/scie.png">
           <h3>Elagage</h3>
           <p></p>
         </div>
         <div class="service-item">
-          <i class="fa fa-cogs"></i>
+        <img src="/WWW/Ressources/Images/escalade.png">
           <h3>Démontage avec rétention</h3>
           <p></p>
         </div>
         <div class="service-item">
-          <i class="fa fa-cloud"></i>
+          <img src="/WWW/Ressources/Images/hache.png">
           <h3>Abattage</h3>
           <p></p>
         </div>
         <div class="service-item">
-          <i class="fa fa-cloud"></i>
+          <img src="/WWW/Ressources/Images/compost.png">
           <h3>Broyage & évacuation</h3>
           <p></p>
         </div>
         <div class="service-item">
-          <i class="fa fa-cloud"></i>
+        <img src="/WWW/Ressources/Images/couper.png">
           <h3>Fendage</h3>
           <p></p>
         </div>
         <div class="service-item">
-          <i class="fa fa-cloud"></i>
+        <img src="/WWW/Ressources/Images/corde.png">
           <h3>Travaux cordiste dans le batiment</h3>
           <p></p>
         </div>
         <div class="service-item">
-          <i class="fa fa-cloud"></i>
+        <img src="/WWW/Ressources/Images/tyrolienne.png">
           <h3>Entretien des parcs accrobranche</h3>
           <p></p>
         </div>
         <div class="service-item">
-          <i class="fa fa-cloud"></i>
+        <img src="/WWW/Ressources/Images/cabane.png">
           <h3>Entretien des palombieres</h3>
           <p></p>
         </div>

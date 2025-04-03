@@ -3,20 +3,31 @@
 <section class="container">
     <div class="container_form">
         <h2>Contactez-nous</h2>
-        <form action="/contact_soumission.php" method="POST" enctype="multipart/form-data">
-            <input type="text" name="nom" placeholder="Renseignez votre nom" required>
-            <input type="text" name="prenom" placeholder="Renseignez votre prénom" required>
-            <input type="email" name="email" placeholder="Renseignez votre email" required>
-            <input type="tel" name="phone" placeholder="Renseignez votre numéro de téléphone" required>
-            <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+        <form action="/contact_soumission.php" method="POST" enctype="multipart/form-data" autocomplete="off">
+            <!-- Champ fantôme pour éviter l'autocomplétion -->
+            <input type="text" name="fakeusernameremembered" style="display:none;" autocomplete="off">
+
+            <input type="text" name="nom_user" placeholder="Renseignez votre nom" required autocomplete="nope">
+            <input type="text" name="prenom_user" placeholder="Renseignez votre prénom" required autocomplete="nope">
+            <input type="email" name="email_user" placeholder="Renseignez votre email" required autocomplete="new-email">
+            <input type="tel" name="phone_user" placeholder="Renseignez votre numéro de téléphone" required autocomplete="nope">
+            <textarea name="message" rows="5" placeholder="Votre message" required autocomplete="off"></textarea>
             <input type="file" name="photo" accept="image/*">
+
             <div class="checkbox-container">
                 <input type="checkbox" name="consentement" required>
                 <label for="consentement">J'accepte que mes données soient utilisées conformément à la RGPD.</label>
             </div>
-                <div class="g-recaptcha" data-sitekey="VOTRE_CLE_PUBLIQUE"></div>
-                <button type="submit">Envoyer</button>
+
+            <!-- Honeypot (Champ invisible pour les bots) -->
+            <input type="text" name="ref_code" style="display:none;" autocomplete="off">
+
+            <!-- Délai minimum caché -->
+            <input type="hidden" name="timestamp" value="<?= time(); ?>">
+
+            <button type="submit">Envoyer</button>
         </form>
+
     </div>
 </section>
 <section class="container">
