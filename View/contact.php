@@ -12,7 +12,24 @@
             <input type="email" name="email_user" placeholder="Renseignez votre email" required autocomplete="new-email">
             <input type="tel" name="phone_user" placeholder="Renseignez votre numéro de téléphone" required autocomplete="nope">
             <textarea name="message" rows="5" placeholder="Votre message" required autocomplete="off"></textarea>
-            <input type="file" name="photo" accept="image/*">
+            <div class="file-wrapper">
+            <input type="file" name="photo" id="photoInput" accept="image/*">
+            <button type="button" id="removeFile" style="display: none;">Supprimer le fichier</button>
+            <script>
+                const photoInput = document.getElementById('photoInput');
+                const removeFileButton = document.getElementById('removeFile');
+                photoInput.addEventListener('change', function() {
+                    if (photoInput.files.length > 0) {
+                        removeFileButton.style.display = 'inline';
+                    } else {
+                        removeFileButton.style.display = 'none';
+                    }
+                });
+                removeFileButton.addEventListener('click', function() {
+                    photoInput.value = '';
+                    removeFileButton.style.display = 'none';
+                });
+            </script>  
 
             <div class="checkbox-container">
                 <input type="checkbox" name="consentement" required>
@@ -20,12 +37,16 @@
             </div>
 
             <!-- Honeypot (Champ invisible pour les bots) -->
-            <input type="text" name="ref_code" style="display:none;" autocomplete="off">
+            <div style="position: absolute; left: -9999px;">
+                <label for="honeypot">Ne pas remplir ce champ</label>
+                <input type="text" name="honeypot" id="honeypot" autocomplete="off" tabindex="-1">
+            </div>
 
             <!-- Délai minimum caché -->
             <input type="hidden" name="timestamp" value="<?= time(); ?>">
 
             <button type="submit">Envoyer</button>
+            
         </form>
 
     </div>
