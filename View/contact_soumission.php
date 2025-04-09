@@ -78,7 +78,7 @@ function formatPhoneNumber($number)
 
 // Traitement de l'upload de l'image
 if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
-    $uploadDir = 'C:/wamp64/www/Projet_Altapro65/uploads/'; 
+    $uploadDir = 'C:/wamp64/Projet_Altapro65/uploads/'; 
     $uploadFile = $uploadDir . preg_replace("/[^a-zA-Z0-9\._-]/", "_", basename($_FILES['photo']['name']));
     $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
     $allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];

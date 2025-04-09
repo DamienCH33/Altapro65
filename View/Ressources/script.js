@@ -1,50 +1,65 @@
 document.addEventListener('DOMContentLoaded', function () {
-    if (null === document.querySelector('.slider')) {
-      return;
-    }
+  // Vérifie si le conteneur swiper existe
+  if (null === document.querySelector('.swiper-container')) {
+    return;
+  }
 
-    const swiperWrapper = document.querySelector('.wrapper');
-    const slides = document.querySelectorAll('.swiper-slide');
-    const nextButton = document.querySelector('.button-next');
-    const prevButton = document.querySelector('.button-prev');
-    let currentIndex = 0; // L'index du slide actuel
-    const totalSlides = slides.length;
+  const swiperWrapper = document.querySelector('.swiper-wrapper');
+  const slides = document.querySelectorAll('.swiper-slide');
+  const nextButton = document.querySelector('.swiper-button-next');
+  const prevButton = document.querySelector('.swiper-button-prev');
+  let currentIndex = 0; // L'index du slide actuel
+  const totalSlides = slides.length;
 
-    // Fonction pour changer de slide
-    function changeSlide(index) {
-        // Si l'index est inférieur à 0, on revient au dernier slide
-        if (index < 0) {
-            currentIndex = totalSlides - 1;
-        }
-        // Si l'index est supérieur ou égal au nombre de slides, on revient au premier slide
-        else if (index >= totalSlides) {
-            currentIndex = 0;
-        } else {
-            currentIndex = index;
-        }
+  // Fonction pour changer de slide
+  function changeSlide(index) {
+      // Si l'index est inférieur à 0, on revient au dernier slide
+      if (index < 0) {
+          currentIndex = totalSlides - 1;
+      }
+      // Si l'index est supérieur ou égal au nombre de slides, on revient au premier slide
+      else if (index >= totalSlides) {
+          currentIndex = 0;
+      } else {
+          currentIndex = index;
+      }
 
-        // Applique une transformation pour faire défiler le slider
-        swiperWrapper.style.transform = `translateX(-${currentIndex * 100}vw)`;
-    }
+      // Applique une transformation pour faire défiler le slider
+      swiperWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
 
-    // Navigation vers le slide suivant
-    nextButton.addEventListener('click', function () {
-        changeSlide(currentIndex + 1);
-    });
+  // Fonction pour démarrer le défilement automatique
+  let autoSlideInterval;
+  function startAutoSlide() {
+      autoSlideInterval = setInterval(function () {
+          changeSlide(currentIndex + 1);
+      }, 8000); // Défilement toutes les 8 secondes
+  }
 
-    // Navigation vers le slide précédent
-    prevButton.addEventListener('click', function () {
-        changeSlide(currentIndex - 1);
-    });
+  // Fonction pour arrêter le défilement automatique
+  function stopAutoSlide() {
+      clearInterval(autoSlideInterval);
+  }
 
-    // Défilement automatique du slider toutes les 8 secondes
-    setInterval(function () {
-        changeSlide(currentIndex + 1);
-    }, 8000); // 8000ms = 8 secondes
+  // Navigation vers le slide suivant
+  nextButton.addEventListener('click', function () {
+      changeSlide(currentIndex + 1);
+      stopAutoSlide(); // Arrête le défilement automatique
+      startAutoSlide(); // Redémarre le défilement automatique
+  });
 
-    // Initialiser le slider au début
-    changeSlide(currentIndex);
+  // Navigation vers le slide précédent
+  prevButton.addEventListener('click', function () {
+      changeSlide(currentIndex - 1);
+      stopAutoSlide(); // Arrête le défilement automatique
+      startAutoSlide(); // Redémarre le défilement automatique
+  });
+
+  // Initialiser le slider au début
+  changeSlide(currentIndex);
+  startAutoSlide(); // Démarre le défilement automatique
 });
+
 
 
 /* END SLIDER REAL*/
