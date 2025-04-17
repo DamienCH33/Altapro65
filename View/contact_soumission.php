@@ -57,7 +57,7 @@ foreach ($_POST as $cle => $valeur) {
         $valeur = ucfirst($valeur);
     }
     if ('' !== $valeur) {
-        $data[$cle] = $valeur;
+        $data[$cle] = htmlspecialchars($valeur, ENT_QUOTES, 'UTF-8');
     }
 }
 
@@ -82,16 +82,28 @@ if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
     $uploadFile = $uploadDir . preg_replace("/[^a-zA-Z0-9\._-]/", "_", basename($_FILES['photo']['name']));
     $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
     $allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];
+    
+    // Vérification du type MIME de l'image
+    $imageInfo = getimagesize($_FILES['photo']['tmp_name']);
+    if ($imageInfo === false) {
+        die('Le fichier téléchargé n\'est pas une image valide.');
+    }
+    
+    // Vérification de la taille du fichier
+    if ($_FILES['photo']['size'] > 2 * 1024 * 1024) { // Limite à 2 Mo
+        die('Le fichier est trop volumineux.');
+    }
+
     if (!in_array($imageFileType, $allowedTypes)) {
         die('Seuls les fichiers image sont autorisés.');
     }
+
     if (move_uploaded_file($_FILES['photo']['tmp_name'], $uploadFile)) {
         $data['photo'] = $uploadFile;
     } else {
         die('Erreur lors du téléchargement du fichier.');
     }
 }
-
 
 // Ajout de la date d'envoi date et heure actuelles
 $data['date_envoi'] = date('Y-m-d H:i:s');
@@ -164,5 +176,5 @@ if (!empty($data)) {
     }
 }
 
-header('location: /succes.php');
+header('location: /contact_succes.php');
 exit;

@@ -9,9 +9,12 @@
 
     <!-- Deuxième colonne pour le texte des services -->
     <div class="col-md-4 col-12 mb-4 services">
-      <h2>Nos Services</h2>
-      <p>Nous proposons une gamme de services adaptés à vos besoins.</p>
-      <p>Découvrez les travaux que nous pouvons effectuer :</p>
+      <div class="text-center text-white mb-4">
+        <h2>Nos Services</h2>
+        <p>Nous proposons une gamme de services adaptés à vos besoins.</p>
+        <p>Découvrez les travaux que nous pouvons effectuer :</p>
+      </div>
+
       <div class="row services-items">
         <div class="col-4 mb-4">
           <div class="service-item text-center p-3 bg-success text-white rounded shadow">

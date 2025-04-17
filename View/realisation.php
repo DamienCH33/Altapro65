@@ -1,6 +1,11 @@
-<?php include_once 'header.php'; ?>
 <?php
+include_once 'header.php';
 include_once '../config/database.php';
+
+// Paramètres pour la pagination
+$commentsPerPage = 5;
+$currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1;
+$offset = ($currentPage - 1) * $commentsPerPage;
 
 // Suppression d'un commentaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment_id'])) {
@@ -10,10 +15,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment_id']))
     $stmt = $db->prepare("DELETE FROM comments WHERE id = :id");
     $stmt->execute([':id' => $commentId]);
 
-    // Redirection pour éviter la modale qui se réouvre après un F5
-    header("Location: " . $_SERVER['PHP_SELF']);
+    // Redirection
+    header("Location: realisation.php");
     exit();
 }
+
+// Calcul du nombre total de commentaires
+$db = Database::connect();
+$sql = "SELECT COUNT(*) FROM comments";
+$stmt = $db->prepare($sql);
+$stmt->execute();
+$totalComments = $stmt->fetchColumn();
+$totalPages = ceil($totalComments / $commentsPerPage); // Calcul du nombre total de pages
+
+// Récupérer les commentaires pour la page actuelle
+$sql = "SELECT * FROM comments ORDER BY created_at DESC LIMIT :offset, :limit";
+$stmt = $db->prepare($sql);
+$stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+$stmt->bindValue(':limit', $commentsPerPage, PDO::PARAM_INT);
+$stmt->execute();
+$comments = $stmt->fetchAll();
 ?>
 
 <section class="real_slider">
@@ -131,6 +152,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment_id']))
 
 <section class="comments-list py-5">
     <div class="container">
+             <!-- Pagination en haut à droite -->
+             <div class="pagination-container" style="text-align: right; margin-bottom: 20px;">
+            <?php
+            // Affichage des numéros de page
+            for ($i = 1; $i <= $totalPages; $i++) {
+                // Lien de pagination avec la page actuelle
+                echo '<a href="realisation.php?page=' . $i . '" class="btn btn-link">' . $i . '</a>';
+                if ($i < $totalPages) {
+                    echo ' | ';
+                }
+            }
+            ?>
+        </div>
         <h3>Commentaires récents</h3>
         <?php
         $sql = "SELECT * FROM comments ORDER BY created_at DESC";
@@ -192,24 +226,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment_id']))
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const errorModal = document.getElementById('errorModal');
-    const closeErrorModal = document.getElementById('closeErrorModal');
-    
-    // Fonction pour ouvrir la modale
-    function openErrorModal(message) {
-        document.getElementById('errorMessage').textContent = message;
-        errorModal.classList.remove('hidden');
-    }
+    const deleteButtons = document.querySelectorAll('.btn-danger');
+    const modal = document.getElementById('modal');
+    const modalCommentIdInput = document.getElementById('modal-comment-id');
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const commentId = this.getAttribute('data-id');
+            modalCommentIdInput.value = commentId;
+            modal.classList.remove('hidden');
+        });
+    });
 
     // Fonction pour fermer la modale
-    closeErrorModal.addEventListener('click', function() {
-        errorModal.classList.add('hidden');
-    });
-    
-    // Ajouter un événement de fermeture si on clique en dehors de la modale
+    function closeModal() {
+        modal.classList.add('hidden');
+    }
+
+    // Fermer la modale en cliquant en dehors
     window.addEventListener('click', function(event) {
-        if (event.target === errorModal) {
-            errorModal.classList.add('hidden');
+        if (event.target === modal) {
+            closeModal();
         }
     });
 });
