@@ -107,7 +107,7 @@ $comments = $stmt->fetchAll();
     </div>
 </section>
 
-<div class="modal" id="imageModal">
+<div class="modal" id="imageModal" style="display: none">
     <span class="close" id="closeModal">&times;</span>
     <img class="modal-content" id="modalImage" />
 </div>
