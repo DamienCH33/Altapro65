@@ -63,9 +63,18 @@
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2643.5177170557217!2d0.12829879230678698!3d43.109607900832515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a82de9d64375ad%3A0xeb5c91f2af4c4e68!2s11%20Rue%20du%20Moulin%2C%2065200%20Ordizan!5e1!3m2!1sfr!2sfr!4v1744207924773!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
     <div class="contact-info">
-      <p><strong>Adresse :</strong> 11 rue du moulin, 65200 ORDIZAN, France</p>
-      <p><strong>Téléphone :</strong> +33 6 50 08 80 65</p>
-      <p><strong>Email :</strong> sebgautier33@gmail.com</p>
+      <p>
+          <strong>Adresse :</strong>
+          11 rue du moulin, 65200 ORDIZAN, France
+      </p>
+      <p>
+          <strong>Téléphone :</strong>
+          <a href="tel:+33650088065">+33 6 50 08 80 65</a>
+      </p>
+      <p>
+          <strong>Email :</strong>
+          <a href="mailto:sebgautier33@gmail.com">sebgautier33@gmail.com</a>
+      </p>
     </div>
   </div>
 
