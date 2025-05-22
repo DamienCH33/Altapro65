@@ -651,12 +651,6 @@ body.altapro {
 }
 
 .services-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  width: 100%;
-  gap: 20px;
-  flex-wrap: wrap;
   background: linear-gradient(135deg, #3d2b1f, #004d00, #007a00, #3d2b1f);
   box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.5), -4px -4px 10px rgba(255, 255, 255, 0.05);
   border-radius: 12px;
@@ -665,13 +659,10 @@ body.altapro {
   margin: 0;
 }
 
-.services-photo, .services-info {
-  margin-top: 200px;
-}
-.services-container .col-md-4, .services-photo, .services-info {
+/*.services-container .col-md-4, .services-photo, .services-info {
   flex: 1 1 30%;
   max-width: 33.33%;
-}
+}*/
 
 /* Centrage pour les textes dans la section "Nos services" */
 .services-section > .text-center {
@@ -696,7 +687,7 @@ body.altapro {
 }
 
 .services h3 {
-  font-size: 1.25em;
+  font-size: 1em;
   margin-bottom: 20px;
   color: white;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 1.5);
@@ -713,23 +704,7 @@ body.altapro {
   box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.4);
 }
 
-.services-items .col-4 {
-  margin-bottom: 20px; /* Espace entre les lignes */
-  padding-left: 10px;
-  padding-right: 10px;
-  
-}
-.services-items {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
 .service-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
   background-color: #28a745;
   color: white;
   border-radius: 10px;
@@ -774,18 +749,6 @@ body.altapro {
     padding: 10px;
   }
 
-  .services-photo,
-  .services-info,
-  .services {
-    max-width: 100%;
-    flex: 1 1 100%;
-    padding: 10px;
-  }
-
-  .service-item {
-    flex: 1 1 100%;
-  }
-
   .services h2 {
     font-size: 20px;
   }
@@ -806,23 +769,6 @@ body.altapro {
 
 /* 2. Mobiles standards (375px à 479px) */
 @media (min-width: 375px) and (max-width: 479px) {
-  .services-container {
-    flex-direction: column;
-    padding: 10px;
-  }
-
-  .services-photo,
-  .services-info,
-  .services {
-    max-width: 100%;
-    flex: 1 1 100%;
-    padding: 15px;
-  }
-
-  .service-item {
-    flex: 1 1 100%;
-  }
-
   .services h2 {
     font-size: 22px;
   }
@@ -843,22 +789,6 @@ body.altapro {
 
 /* 3. Tablettes portrait (480px à 767px) */
 @media (min-width: 480px) and (max-width: 767px) {
-  .services-container {
-    flex-direction: column;
-    padding: 15px;
-  }
-
-  .services-photo,
-  .services-info,
-  .services {
-    max-width: 100%;
-    flex: 1 1 100%;
-    padding: 20px;
-  }
-
-  .service-item {
-    flex: 1 1 100%;
-  }
 
   .services h2 {
     font-size: 24px;
@@ -880,18 +810,6 @@ body.altapro {
 
 /* 4. Tablettes paysage (768px à 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
-  .services-photo,
-  .services-info,
-  .services {
-    max-width: 48%;
-    flex: 1 1 48%;
-    padding: 20px;
-  }
-
-  .service-item {
-    flex: 1 1 48%;
-  }
-
   .services h2 {
     font-size: 26px;
   }
@@ -907,15 +825,6 @@ body.altapro {
 
 /* 5. Petits laptops (1025px à 1366px) */
 @media (min-width: 1025px) and (max-width: 1366px) {
-  .services-photo,
-  .services-info,
-  .services {
-    max-width: 32%;
-  }
-
-  .service-item {
-    flex: 1 1 calc(50% - 20px);
-  }
 
   .services h2 {
     font-size: 28px;
@@ -932,16 +841,6 @@ body.altapro {
 
 /* 6. Très grands écrans (1440px et +) */
 @media (min-width: 1440px) {
-  .services-photo,
-  .services-info,
-  .services {
-    max-width: 30%;
-  }
-
-  .service-item {
-    flex: 1 1 calc(33.33% - 20px);
-  }
-
   .services h2 {
     font-size: 32px;
   }
@@ -951,7 +850,6 @@ body.altapro {
     font-size: 18px;
   }
 
-  .service-item h3,
   .info-box h3 {
     font-size: 24px;
   }
@@ -961,14 +859,8 @@ body.altapro {
 /* REALISATION*/
 /* REALISATION-SLIDER*/
 .real_slider {
-  width: 100%;
-  margin: 0 20px;
   position: relative;
-  height: 50vh;
   overflow: hidden;
-  /*background: linear-gradient(145deg, rgba(0, 179, 0, 0.8), rgba(0, 138, 0, 0.8));*/
-  /*box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4), -4px -4px 10px rgba(255, 255, 255, 0.05);*/
-  /*border-radius: 12px;*/
   transition: background-color 1s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
@@ -1086,11 +978,6 @@ body.altapro {
 
 /* 1. Très petits mobiles (320px à 374px) */
 @media (max-width: 374px) {
-  .real_slider {
-    height: 28vh;
-    margin: 0 10px;
-  }
-
   .content h3 {
     font-size: 1.3em;
   }
@@ -1113,11 +1000,6 @@ body.altapro {
 
 /* 2. Mobiles standards (375px à 479px) */
 @media (min-width: 375px) and (max-width: 479px) {
-  .real_slider {
-    height: 32vh;
-    margin: 0 10px;
-  }
-
   .content h3 {
     font-size: 1.6em;
   }
@@ -1140,11 +1022,6 @@ body.altapro {
 
 /* 3. Tablettes portrait (480px à 767px) */
 @media (min-width: 480px) and (max-width: 767px) {
-  .real_slider {
-    height: 35vh;
-    margin: 0 15px;
-  }
-
   .content h3 {
     font-size: 1.8em;
   }
@@ -1167,11 +1044,6 @@ body.altapro {
 
 /* 4. Tablettes paysage (768px à 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
-  .real_slider {
-    height: 45vh;
-    margin: 0 20px;
-  }
-
   .content h3 {
     font-size: 2.2em;
   }
@@ -1189,10 +1061,6 @@ body.altapro {
 
 /* 5. Petits laptops (1025px à 1366px) */
 @media (min-width: 1025px) and (max-width: 1366px) {
-  .real_slider {
-    height: 50vh;
-  }
-
   .content h3 {
     font-size: 2.5em;
   }
@@ -1208,10 +1076,6 @@ body.altapro {
 
 /* 6. Très grands écrans (1440px et +) */
 @media (min-width: 1440px) {
-  .real_slider {
-    height: 55vh;
-  }
-
   .content h3 {
     font-size: 2.8em;
   }
@@ -1565,6 +1429,11 @@ button:hover {
   .video-container video { max-height: 500px; }
 
   .comment-form textarea { height: 160px; }
+}
+
+.comment-container{
+  max-height: 500px; 
+  overflow: auto;
 }
 
 /* END REALISATION*/

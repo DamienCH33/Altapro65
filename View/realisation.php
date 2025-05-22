@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include_once 'header.php';
 include_once '../config/database.php';
 
@@ -37,37 +39,41 @@ $stmt->execute();
 $comments = $stmt->fetchAll();
 ?>
 
-<section class="real_slider">
-    <div class="container">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide" style="background: url('/Ressources/Images/Image-3test.jpg') no-repeat center center; background-size: cover;">
-                    <div class="content text-center text-white">
-                        <span>Lorem ipsum dolor sit amet.</span>
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <a href="#" class="btn btn-success">Plus de découverte</a>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col realisation-slider mx-4 px-0">
+            <section class="real_slider">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide rounded" style="background: url('/Ressources/Images/Image-3test.jpg') no-repeat center center; background-size: cover;">
+                            <div class="content text-center text-white">
+                                <span>Lorem ipsum dolor sit amet.</span>
+                                <h3>Lorem ipsum dolor sit amet.</h3>
+                                <a href="#" class="btn btn-success">Plus de découverte</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide rounded" style="background: url('/Ressources/Images/banniere-foret-montagne.avif') no-repeat center center; background-size: cover;">
+                            <div class="content text-center text-white">
+                                <span>Lorem ipsum dolor sit amet.</span>
+                                <h3>Lorem ipsum dolor sit amet.</h3>
+                                <a href="#" class="btn btn-success">Plus de découverte</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide rounded" style="background: url('/Ressources/Images/Image-3.jpg') no-repeat center center; background-size: cover;">
+                            <div class="content text-center text-white">
+                                <span>Lorem ipsum dolor sit amet.</span>
+                                <h3>Lorem ipsum dolor sit amet.</h3>
+                                <a href="#" class="btn btn-success">Plus de découverte</a>
+                            </div>
+                        </div>
                     </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
-                <div class="swiper-slide" style="background: url('/Ressources/Images/banniere-foret-montagne.avif') no-repeat center center; background-size: cover;">
-                    <div class="content text-center text-white">
-                        <span>Lorem ipsum dolor sit amet.</span>
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <a href="#" class="btn btn-success">Plus de découverte</a>
-                    </div>
-                </div>
-                <div class="swiper-slide" style="background: url('/Ressources/Images/Image-3.jpg') no-repeat center center; background-size: cover;">
-                    <div class="content text-center text-white">
-                        <span>Lorem ipsum dolor sit amet.</span>
-                        <h3>Lorem ipsum dolor sit amet.</h3>
-                        <a href="#" class="btn btn-success">Plus de découverte</a>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            </section>
         </div>
     </div>
-</section>
+</div>
 
 <section class="gallery py-5">
     <div class="container text-center">
@@ -146,26 +152,19 @@ $comments = $stmt->fetchAll();
                 <input type="hidden" name="timestamp" value="<?= time(); ?>">
                 <button type="submit" class="btn btn-primary">Envoyer</button>
             </form>
+            <?php if (isset($_SESSION['error_message'])) { ?>
+            <em class="text-danger"><?= $_SESSION['error_message'] ?></em>
+            <?php 
+                unset($_SESSION['error_message']);
+            } ?>
         </div>
     </div>
 </section>
 
 <section class="comments-list py-5">
     <div class="container">
-             <!-- Pagination en haut à droite -->
-             <div class="pagination-container" style="text-align: right; margin-bottom: 20px;">
-            <?php
-            // Affichage des numéros de page
-            for ($i = 1; $i <= $totalPages; $i++) {
-                // Lien de pagination avec la page actuelle
-                echo '<a href="realisation.php?page=' . $i . '" class="btn btn-link">' . $i . '</a>';
-                if ($i < $totalPages) {
-                    echo ' | ';
-                }
-            }
-            ?>
-        </div>
-        <h3>Commentaires récents</h3>
+       <h3>Commentaires récents</h3>
+       <div class="comment-container pe-2">
         <?php
         $sql = "SELECT * FROM comments ORDER BY created_at DESC";
         $db = Database::connect();
@@ -177,6 +176,7 @@ $comments = $stmt->fetchAll();
             foreach ($comments as $comment) {
                 $createdAtTimestamp = strtotime($comment['created_at']);
                 $timeDifference = time() - $createdAtTimestamp;
+
                 $isRecentComment = $timeDifference <= 120;
         ?>
                 <div class="comment" data-created-at="<?= strtotime($comment['created_at']) ?>">
@@ -209,6 +209,7 @@ $comments = $stmt->fetchAll();
             echo "Il n'y a pas de commentaire";
         }
         ?>
+        </div>
     </div>
 </section>
 

@@ -1,4 +1,4 @@
-<footer class="footer bg-light">
+<footer class="footer bg-light mt-4">
   <div class="container text-center">
       <div class="row justify-content-between">
         <div class="col-4">

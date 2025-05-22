@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Vérification du délai minimum (5 secondes avant soumission)
-    if (!isset($_POST['timestamp']) || time() - $_POST['timestamp'] < 5) {
+    if (!isset($_POST['timestamp']) || time() - $_POST['timestamp'] < 1) {
         die("Soumission trop rapide !");
     }
 }
